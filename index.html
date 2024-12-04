@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<div id="navbar">CRICKET VORTEX
+    <p id="navtext">-battle for supremacy</p>
+</div>
+<img src="Screenshot 2024-08-19 162645.png" style="display: flex;position: absolute;height: 200px;left: 31%;top: 150px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+<div id="howtp">
+    <h1 id="x" style=" cursor: pointer;display: flex;position: absolute; top: 5%; left: 90%; font-size: 30px;">x</h1>
+  <h1 style="display: flex;position: absolute; top: 5%; left: 10%; color:rgb(43, 16, 130) ;">BATTING</h1>
+    <h3 style="display: flex;position: absolute; top: 18%; left: 10%; font-size: 20px;">-if you click THROW button bowler throw the ball</h3>
+    <h3 style="display: flex;position: absolute; top: 27%; left: 10%; font-size: 20px;">-if you click the hit button batsman hit the ball </h3>
+    <h3 style="display: flex;position: absolute; top: 35%; left: 10%; font-size: 20px;">-click hit button at right time it will be more runs !</h3>
+    <h1 style="display: flex;position: absolute; top: 55%; left: 10%; color:rgb(43, 16, 130) ;">BOWLING</h1>
+    <h3 style="display: flex;position: absolute; top: 69%; left: 10%; font-size: 20px;">-for every 5 sec bowl button refresh</h3>
+    <h3 style="display: flex;position: absolute; top: 78%; left: 10%; font-size: 20px;">-if you click the bowl button bowler will bowl !</h3>
+                
+</div>
+<a href="home.html" id="letspaly">LET'S PLAY</a>
+<p  style=" cursor: pointer;display: flex;position: absolute; top: 80%; left: 44%; font-size: 15px;color:rgb(43, 16, 130); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: bolder;"
+id="htp">HOW TO PLAY?
+</p>
+<footer>
+  <h2 style="display: flex;position: absolute; top: 55%; left: 42%;">  &#169; the code voyeger</h2>
+  <h2 style="display: flex;position: absolute; top: 75%; left: 35%;">  contact:thecodevoyeger07@gmail.com</h2>
+</footer>
+<script>
+    let htp=document.getElementById("htp");
+const howtp=document.getElementById("howtp");
+const x=document.getElementById("x");
+
+   htp.addEventListener("click",()=>{
+howtp.style.display="flex"
+})
+x.addEventListener("click",()=>{
+howtp.style.display="none"
+})
+</script>
