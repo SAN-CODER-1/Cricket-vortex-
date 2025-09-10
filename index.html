@@ -1,114 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Algorithm Quiz — Mixed Languages</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Algorithm Quiz — Missing Line</title>
 <style>
+:root { --card-bg:#fff; --page-bg:#f3f4f6; --accent:#2563eb; --good:#10b981; --bad:#ef4444; }
 body {
-  margin: 0;
-  font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(135deg,#667eea,#764ba2);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 20px;
-  color: #333;
-  user-select: none;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--page-bg);
+  margin: 0; padding: 24px;
+  display: flex; justify-content: center;
 }
 .card {
-  background: rgba(255,255,255,0.95);
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-  width: 950px;
-  max-width: 96%;
-  animation: fadeIn 1s ease;
-  backdrop-filter: blur(8px);
+  background: var(--card-bg);
+  padding: 20px; border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(20,20,30,0.08);
+  width: 900px; max-width: 96%;
 }
-h1 {
-  margin: 0 0 16px;
-  font-size: 26px;
-  text-align: center;
-  background: linear-gradient(90deg,#ff9966,#ff5e62);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.qmeta { font-weight: 600; margin: 10px 0; }
-.timer { font-weight: 700; font-size: 18px; margin: 6px 0; }
-.timer span { color: #d97706; }
-pre {
-  background: #1f2937;
-  color: #f9fafb;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  overflow-x: auto;
-}
-.options { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+h1 { margin: 0 0 8px; font-size: 20px; }
+.qmeta { color: #374151; font-weight: 600; margin-bottom: 8px; }
+.timer { font-weight: 700; color: var(--accent); font-size: 18px; margin: 6px 0; }
+pre { background: #f9fafb; padding: 10px; border-radius: 8px; font-size: 14px; white-space: pre-wrap; margin: 8px 0; }
+.options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
 label {
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #f1f5f9;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  background: #f8fafc; padding: 10px; border-radius: 8px; cursor: pointer;
+  border: 1px solid transparent; display: flex; align-items: center; gap: 8px;
 }
-label:hover { background: #e2e8f0; }
-label.selected { border-color: #3b82f6; background: rgba(59,130,246,0.1); }
-label.correct { border-color: #16a34a; background: rgba(22,163,74,0.1); }
-label.incorrect { border-color: #dc2626; background: rgba(220,38,38,0.1); }
-button {
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: 0;
-  background: linear-gradient(90deg,#06b6d4,#3b82f6);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
-#feedback {
-  margin-top: 14px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #fef3c7;
-  border: 1px solid #fcd34d;
-  font-weight: 600;
-  display: none;
-}
-.summary { display: none; margin-top: 24px; text-align: center; }
-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-th, td { border:1px solid #ddd; padding:10px; text-align:center; }
-th { background: #f1f5f9; }
-#finalTime { margin-top: 16px; font-size: 18px; font-weight: 600; color:#2563eb; }
-#teamInput {
-  margin-bottom: 16px;
-  padding: 10px;
-  border-radius: 10px;
-  border:1px solid #ccc;
-  width:300px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-@keyframes fadeIn {
-  from { opacity:0; transform: translateY(20px);}
-  to { opacity:1; transform: translateY(0);}
-}
+label.selected { border-color: var(--accent); background: rgba(37,99,235,0.06); }
+label.correct { border-color: var(--good); background: rgba(16,185,129,0.06); }
+label.incorrect { border-color: var(--bad); background: rgba(239,68,68,0.06); opacity: 0.95; }
+button { padding: 8px 12px; border-radius: 8px; border: 0; background: var(--accent); color: white; cursor: pointer; margin-top: 12px; }
+#feedback { margin-top: 12px; padding: 10px; border-radius: 8px; background: #fff; border: 1px solid #e6edf8; font-weight: 600; }
+.summary { display: none; margin-top: 20px; }
+#teamInput { margin-bottom: 16px; padding: 8px; border-radius: 8px; border:1px solid #ccc; width:300px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { border:1px solid #ccc; padding:8px; text-align:center; }
 </style>
 </head>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" oncopy="return false">
+<body>
 <div class="card">
-  <h1>🚀 Algorithm Quiz — Mixed Languages</h1>
-  <div id="teamEntry" style="text-align:center;">
+  <h1>Algorithm Quiz (Missing Line)</h1>
+  <div id="teamEntry">
     <input id="teamInput" placeholder="Enter Team Name" />
     <button id="startBtn">Start Quiz</button>
   </div>
+
   <div id="quiz" style="display:none;">
     <div class="timer">⏳ Total time left: <span id="totalTimer">900</span>s</div>
     <div class="timer">⏱ Question time left: <span id="timer">45</span>s</div>
@@ -116,16 +53,16 @@ th { background: #f1f5f9; }
     <div id="questionText"></div>
     <pre id="codeBlock"></pre>
     <form id="optionsForm" class="options" onsubmit="return false;"></form>
-    <div id="feedback"></div>
+    <div id="feedback" aria-live="polite" style="display:none;"></div>
     <button id="nextBtn">Submit</button>
   </div>
+
   <div id="summary" class="summary">
-    <h2>🏆 Results</h2>
+    <h2>Results</h2>
     <table>
       <tr><th>Team</th><th>Score</th></tr>
       <tr><td id="teamNameCell"></td><td id="teamScoreCell"></td></tr>
     </table>
-    <div id="finalTime">⏳ Time left: <span id="finalTimerValue">0</span>s</div>
   </div>
 </div>
 
@@ -133,129 +70,139 @@ th { background: #f1f5f9; }
 const PER_QUESTION_SECONDS = 45;
 const TOTAL_SECONDS = 45*20;
 
-// 20 questions (Python, Java, C)
 let questions = [
-  {id:1,text:"Python: Sum of list missing line",code:["arr=[1,2,3,4,5]","s=0","for x in arr:","    # Missing Line","print(s)"],options:["s+=x","s=x","s*=x","s-=x"],answer:0},
-  {id:2,text:"Python: Factorial recursion missing line",code:["def fact(n):","    if n==0: return 1","    # Missing Line","print(fact(5))"],options:["return n*fact(n-1)","return n+fact(n-1)","return fact(n-1)","return n"],answer:0},
-  {id:3,text:"Python: Binary search missing line",code:["arr=[1,2,3,4,5]","l,h=0,len(arr)-1","k=4","while l<=h:","    mid=(l+h)//2","    if arr[mid]==k:","        print('Found')","        break","    elif arr[mid]<k:","        # Missing Line","    else:","        h=mid-1"],options:["l=mid+1","h=mid+1","l=mid-1","h=mid-1"],answer:0},
-  {id:4,text:"Python: Bubble sort swap missing line",code:["arr=[5,3,1,4]","n=len(arr)","for i in range(n):","    for j in range(0,n-i-1):","        if arr[j]>arr[j+1]:","            # Missing Line","print(arr)"],options:["arr[j],arr[j+1]=arr[j+1],arr[j]","arr[j]=arr[j+1]","arr[j+1]=arr[j]","pass"],answer:0},
-  {id:5,text:"Python: GCD using Euclidean missing line",code:["def gcd(a,b):","    while b:","        # Missing Line","    return a","print(gcd(20,8))"],options:["a,b=b,a%b","a=a%b","b=a%b","a=a//b"],answer:0},
-  {id:6,text:"Python: Armstrong check missing line",code:["num=153","s=0","n=num","while n>0:","    d=n%10","    # Missing Line","    n//=10","print(s==num)"],options:["s+=d**3","s+=d","s+=d**2","s=d"],answer:0},
-  {id:7,text:"Python: Matrix transpose missing line",code:["mat=[[1,2],[3,4]]","# Missing Line","print(t)"],options:["t=[[mat[j][i] for j in range(2)] for i in range(2)]","t=mat","t=mat[::-1]","t=[]"],answer:0},
-  {id:8,text:"Python: Dictionary count missing line",code:["s='apple'","count={}","for ch in s:","    # Missing Line","print(count)"],options:["count[ch]=count.get(ch,0)+1","count[ch]=1","count[ch]+=1","pass"],answer:0},
-  {id:9,text:"Python: LCM using GCD missing line",code:["def gcd(a,b):","    while b: a,b=b,a%b","    return a","def lcm(a,b):","    # Missing Line","print(lcm(4,6))"],options:["return a*b//gcd(a,b)","return a*b","return gcd(a,b)","return a+b"],answer:0},
-  {id:10,text:"Python: Check anagram missing line",code:["s1='listen';s2='silent'","# Missing Line","print(res)"],options:["res=sorted(s1)==sorted(s2)","res=s1==s2","res=s1 in s2","res=s2 in s1"],answer:0},
-  {id:11,text:"Java: Swap without temp missing line",code:["int a=5,b=7;","// Missing Line","System.out.println(a+\",\"+b);"],options:["a=a^b; b=a^b; a=a^b;","a=b; b=a;","a=a+b; b=a-b; a=a-b;","a=b-a; b=a+b;"],answer:0},
-  {id:12,text:"Java: Print comparison output",code:["String s1 = \"abc\";","String s2 = new String(\"abc\");","System.out.println(s1==s2);"],options:["true","false","Compile error","abc"],answer:1},
-  {id:13,text:"Java: Prime check missing line",code:["int n=7; boolean flag=true;","for(int i=2;i<n;i++){","    if(n%i==0){","# Missing Line","    }","}","System.out.println(flag);"],options:["flag=false; break;","flag=true;","continue;","flag=n==i;"],answer:0},
-  {id:14,text:"Java: Factorial recursion missing line",code:["int fact(int n){","    if(n==0) return 1;","    # Missing Line","}"],options:["return n*fact(n-1);","return n+fact(n-1);","return fact(n-1);","return n;"],answer:0},
-  {id:15,text:"Java: Matrix transpose missing line",code:["int[][] m={{1,2},{3,4}};","int[][] t=new int[2][2];","for(int i=0;i<2;i++){","    for(int j=0;j<2;j++){","# Missing Line","    }","}","System.out.println(Arrays.deepToString(t));"],options:["t[j][i]=m[i][j];","t[i][j]=m[i][j];","t[i][j]=m[j][i];","t[j][j]=m[i][i];"],answer:0},
-  {id:16,text:"C: Swap without temp missing line",code:["int a=5,b=7;","// Missing Line","printf(\"%d %d\",a,b);"],options:["a=a^b; b=a^b; a=a^b;","a=b; b=a;","a=a+b; b=a-b; a=a-b;","a=b-a; b=a+b;"],answer:0},
-  {id:17,text:"C: Pointer output missing line",code:["char *p=\"hello\";","printf(\"%c\",*++p);"],options:["h","e","l","o"],answer:1},
-  {id:18,text:"C: Reverse array missing line",code:["int arr[]={1,2,3,4};","for(int i=0;i<2;i++){","int t=arr[i];","arr[i]=arr[3-i];","# Missing Line","}"],options:["arr[3-i]=t;","arr[i]=t;","t=arr[i];","arr[0]=t;"],answer:0},
-  {id:19,text:"C: Factorial loop missing line",code:["int n=5,f=1;","for(int i=1;i<=n;i++){","# Missing Line","}","printf(\"%d\",f);"],options:["f*=i;","f+=i;","f-=i;","f/=i;"],answer:0},
-  {id:20,text:"C: Matrix transpose missing line",code:["int m[2][2]={{1,2},{3,4}},t[2][2];","for(int i=0;i<2;i++){","for(int j=0;j<2;j++){","# Missing Line","}","}"],options:["t[j][i]=m[i][j];","t[i][j]=m[i][j];","t[i][j]=m[j][i];","t[j][j]=m[i][i];"],answer:0}
+  {"id":1,"text":"Find the missing line to calculate factorial:","code":["n = 5","fact = 1","for i in range(1, n+1):","    # Missing Line","print(fact)"],"options":["fact *= i","fact += i","fact -= i","fact /= i"],"answer":0},
+  {"id":2,"text":"Find the missing line to reverse a number:","code":["num = 1234","rev = 0","while num > 0:","    d = num % 10","    # Missing Line","    num //= 10","print(rev)"],"options":["rev = rev * 10 + d","rev += d","rev -= d","rev = d - rev"],"answer":0},
+  {"id":3,"text":"Find the missing line for sum of list:","code":["arr = [1,2,3,4,5]","s = 0","for x in arr:","    # Missing Line","print(s)"],"options":["s += x","s = x","s *= x","s -= x"],"answer":0},
+  {"id":4,"text":"Find the missing line in Fibonacci:","code":["a, b = 0, 1","for _ in range(5):","    print(a)","    # Missing Line"],"options":["a, b = b, a+b","a, b = a+b, a","b, a = a, b","a, b = b-a, b"],"answer":0},
+  {"id":5,"text":"Palindrome check missing line:","code":["num = 121","temp, rev = num, 0","while num > 0:","    d = num % 10","    # Missing Line","    num //= 10","print(rev == temp)"],"options":["rev = rev*10 + d","rev += d","rev = rev-d","rev = d"],"answer":0},
+  {"id":6,"text":"Missing line for prime check:","code":["n = 7","flag = True","for i in range(2, n):","    if n % i == 0:","        # Missing Line","print(flag)"],"options":["flag = False; break","flag = True","continue","flag = n"],"answer":0},
+  {"id":7,"text":"Find max element missing line:","code":["arr = [10, 3, 5, 20]","m = arr[0]","for x in arr:","    # Missing Line","print(m)"],"options":["if x>m: m=x","if x<m: m=x","m=x","m+=x"],"answer":0},
+  {"id":8,"text":"Binary search missing line:","code":["arr=[1,2,3,4,5]","l,h=0,len(arr)-1","k=4","while l<=h:","    mid=(l+h)//2","    if arr[mid]==k:","        print('Found')","        break","    elif arr[mid]<k:","        # Missing Line","    else:","        h=mid-1"],"options":["l=mid+1","h=mid+1","l=mid-1","h=mid-1"],"answer":0},
+  {"id":9,"text":"Bubble sort missing line:","code":["arr=[5,3,1,4]","n=len(arr)","for i in range(n):","    for j in range(0,n-i-1):","        if arr[j]>arr[j+1]:","            # Missing Line","print(arr)"],"options":["arr[j],arr[j+1]=arr[j+1],arr[j]","arr[j]=arr[j+1]","arr[j+1]=arr[j]","pass"],"answer":0},
+  {"id":10,"text":"String reverse missing line:","code":["s='hello'","# Missing Line","print(r)"],"options":["r=s[::-1]","r=s","r=s.upper()","r=s.lower()"],"answer":0},
+  {"id":11,"text":"Factorial recursion missing line:","code":["def fact(n):","    if n==0: return 1","    # Missing Line","print(fact(5))"],"options":["return n*fact(n-1)","return n+fact(n-1)","return fact(n-1)","return n"],"answer":0},
+  {"id":12,"text":"Missing line for GCD (Euclidean):","code":["def gcd(a,b):","    while b:","        # Missing Line","    return a","print(gcd(20,8))"],"options":["a,b=b,a%b","a=a%b","b=a%b","a=a//b"],"answer":0},
+  {"id":13,"text":"Missing line in Armstrong check:","code":["num=153","s=0","n=num","while n>0:","    d=n%10","    # Missing Line","    n//=10","print(s==num)"],"options":["s+=d**3","s+=d","s+=d**2","s=d"],"answer":0},
+  {"id":14,"text":"Even numbers filter missing line:","code":["arr=[1,2,3,4,5]","# Missing Line","print(evens)"],"options":["evens=[x for x in arr if x%2==0]","evens=arr","evens=[]","evens=[x+2 for x in arr]"],"answer":0},
+  {"id":15,"text":"Matrix transpose missing line:","code":["mat=[[1,2],[3,4]]","# Missing Line","print(t)"],"options":["t=[[mat[j][i] for j in range(2)] for i in range(2)]","t=mat","t=mat[::-1]","t=[]"],"answer":0},
+  {"id":16,"text":"Dictionary count missing line:","code":["s='apple'","count={}","for ch in s:","    # Missing Line","print(count)"],"options":["count[ch]=count.get(ch,0)+1","count[ch]=1","count[ch]+=1","pass"],"answer":0},
+  {"id":17,"text":"Sum of digits recursion:","code":["def sod(n):","    if n==0: return 0","    # Missing Line","print(sod(123))"],"options":["return n%10+sod(n//10)","return n+sod(n-1)","return sod(n-1)","return n"],"answer":0},
+  {"id":18,"text":"LCM using GCD missing line:","code":["def gcd(a,b):","    while b: a,b=b,a%b","    return a","def lcm(a,b):","    # Missing Line","print(lcm(4,6))"],"options":["return a*b//gcd(a,b)","return a*b","return gcd(a,b)","return a+b"],"answer":0},
+  {"id":19,"text":"Check anagram missing line:","code":["s1='listen';s2='silent'","# Missing Line","print(res)"],"options":["res=sorted(s1)==sorted(s2)","res=s1==s2","res=s1 in s2","res=s2 in s1"],"answer":0},
+  {"id":20,"text":"Find second largest missing line:","code":["arr=[10,20,4,8,15]","arr.sort()","# Missing Line"],"options":["print(arr[-2])","print(arr[-1])","print(arr[0])","print(arr[1])"],"answer":0}
 ];
 
-// Shuffle questions and options
-questions.sort(()=>Math.random()-0.5);
+// Shuffle function
+function shuffle(arr){ return arr.sort(()=>Math.random()-0.5); }
+
+let currentIndex = 0;
+let selections = {};
+let timer = PER_QUESTION_SECONDS;
+let totalTimer = TOTAL_SECONDS;
+let tickInterval, totalInterval;
+let isShowingFeedback = false;
+let teamName = "";
+
+// Shuffle options
 questions.forEach(q=>{
-  let opts=q.options.map((opt,i)=>({opt,i}));
-  opts.sort(()=>Math.random()-0.5);
-  q.answer=opts.findIndex(o=>o.i===q.answer);
-  q.options=opts.map(o=>o.opt);
+  let optionsWithIndex = q.options.map((opt,i)=>({opt,i}));
+  optionsWithIndex = shuffle(optionsWithIndex);
+  q.answer = optionsWithIndex.findIndex(o=>o.i === q.answer);
+  q.options = optionsWithIndex.map(o=>o.opt);
 });
 
-// State
-let currentIndex=0,selections={},timer=PER_QUESTION_SECONDS,totalTimer=TOTAL_SECONDS,isShowingFeedback=false,teamName="";
-
-function initQuiz(){
-  teamName=document.getElementById("teamInput").value||"Team";
-  document.getElementById("teamEntry").style.display="none";
-  document.getElementById("quiz").style.display="block";
+function initQuiz() {
+  teamName = document.getElementById('teamInput').value || "Team";
+  document.getElementById('teamEntry').style.display="none";
+  document.getElementById('quiz').style.display="block";
+  currentIndex = 0; selections = {}; timer = PER_QUESTION_SECONDS; totalTimer = TOTAL_SECONDS;
   renderQuestion(); startTimers();
-  localStorage.setItem("quizStarted","true");
 }
 
-// Close quiz if page refresh or tab loses focus
-window.addEventListener("load", ()=>{
-  if(localStorage.getItem("quizStarted")==="true"){
-    alert("Quiz closed!");
-    localStorage.removeItem("quizStarted");
-    document.querySelector(".card").innerHTML="<h2 style='text-align:center;color:red;'>❌ Quiz Closed due to Refresh!</h2>";
-  }
-});
-window.addEventListener("blur", ()=>{ 
-  alert("Quiz closed!"); 
-  localStorage.removeItem("quizStarted");
-  location.reload(); 
-});
+function renderQuestion() {
+  const q = questions[currentIndex];
+  isShowingFeedback = false;
+  document.getElementById('qMeta').textContent = `Team: ${teamName} | Question ${currentIndex+1} of ${questions.length}`;
+  document.getElementById('questionText').textContent = q.text;
+  document.getElementById('codeBlock').textContent = q.code.join("\n");
+  const optionsForm = document.getElementById('optionsForm');
+  optionsForm.innerHTML='';
 
-// Render question
-function renderQuestion(){
-  const q=questions[currentIndex]; isShowingFeedback=false;
-  document.getElementById("qMeta").textContent=`Team: ${teamName} | Question ${currentIndex+1} of ${questions.length}`;
-  document.getElementById("questionText").textContent=q.text;
-  document.getElementById("codeBlock").textContent=q.code.join("\n");
-  const form=document.getElementById("optionsForm"); form.innerHTML="";
   q.options.forEach((opt,i)=>{
     const id=`opt_${currentIndex}_${i}`;
-    const label=document.createElement("label"); label.htmlFor=id;
-    const radio=document.createElement("input"); radio.type="radio"; radio.name="option"; radio.id=id; radio.value=i;
-    radio.addEventListener("change",()=>{ selections[currentIndex]=i; [...form.querySelectorAll("label")].forEach(l=>l.classList.remove("selected")); label.classList.add("selected"); });
-    label.appendChild(radio); label.appendChild(document.createTextNode(" "+opt)); form.appendChild(label);
+    const label=document.createElement('label');
+    label.htmlFor=id;
+    const radio=document.createElement('input');
+    radio.type='radio'; radio.name='option'; radio.id=id; radio.value=i;
+    radio.addEventListener('change',()=>{
+      selections[currentIndex]=i;
+      Array.from(optionsForm.querySelectorAll('label')).forEach(l=>l.classList.remove('selected'));
+      label.classList.add('selected');
+    });
+    label.appendChild(radio); label.appendChild(document.createTextNode(' '+opt));
+    optionsForm.appendChild(label);
   });
-  document.getElementById("timer").textContent=timer;
-  document.getElementById("totalTimer").textContent=totalTimer;
-  document.getElementById("nextBtn").textContent="Submit";
-  document.getElementById("feedback").style.display="none";
+
+  document.getElementById('timer').textContent = timer;
+  document.getElementById('totalTimer').textContent = totalTimer;
+  document.getElementById('nextBtn').textContent='Submit';
 }
 
-function startTimers(){
-  setInterval(()=>{
-    timer--; totalTimer--;
-    if(timer<0){submitOrShowFeedback(true);}
-    if(totalTimer<0){endQuiz();}
-    document.getElementById("timer").textContent=timer;
-    document.getElementById("totalTimer").textContent=totalTimer;
+function startTimers() {
+  clearInterval(tickInterval); clearInterval(totalInterval);
+  tickInterval=setInterval(()=>{
+    timer--; if(timer<0){ submitOrShowFeedback(true); return; }
+    document.getElementById('timer').textContent=timer;
+  },1000);
+  totalInterval=setInterval(()=>{
+    totalTimer--; document.getElementById('totalTimer').textContent=totalTimer;
+    if(totalTimer<=0){ showResults(); }
   },1000);
 }
 
 function submitOrShowFeedback(auto=false){
-  if(isShowingFeedback) return;
-  const q=questions[currentIndex];
-  const chosen=selections[currentIndex];
-  const labels=[...document.querySelectorAll("#optionsForm label")];
-  labels.forEach((l,i)=>{
-    l.classList.remove("correct","incorrect");
-    if(i===q.answer) l.classList.add("correct");
-    else if(chosen===i) l.classList.add("incorrect");
-  });
-  const fb=document.getElementById("feedback"); fb.style.display="block";
-  if(chosen===q.answer) fb.textContent="✅ Correct!"; else fb.textContent=`❌ Wrong! Correct: "${q.options[q.answer]}"`;
+  if(isShowingFeedback){ goNext(); return; }
+  clearInterval(tickInterval);
+  const q=questions[currentIndex]; const selected=selections[currentIndex];
   isShowingFeedback=true;
-  document.getElementById("nextBtn").textContent="Next →";
+  const labels=Array.from(document.getElementById('optionsForm').querySelectorAll('label'));
+  labels.forEach((l,idx)=>{
+    const r=l.querySelector('input'); r.disabled=true;
+    l.classList.remove('correct','incorrect','selected');
+    if(idx===q.answer) l.classList.add('correct');
+    if(selected===idx && selected!==q.answer) l.classList.add('incorrect');
+    if(selected===idx && selected===q.answer) l.classList.add('selected');
+  });
+  const fb=document.getElementById('feedback');
+  fb.style.display='block';
+  if(selected===q.answer){ fb.textContent='Correct ✅'; }
+  else if(selected==null){ fb.textContent=`No answer. Correct: ${q.options[q.answer]}`; }
+  else{ fb.textContent=`Incorrect ❌. Correct: ${q.options[q.answer]}`; }
+  document.getElementById('nextBtn').textContent='Next';
+  if(auto) setTimeout(goNext,1500);
 }
 
-function nextQuestion(){
-  if(!isShowingFeedback){submitOrShowFeedback(); return;}
-  currentIndex++; timer=PER_QUESTION_SECONDS;
-  if(currentIndex>=questions.length){endQuiz(); return;}
-  renderQuestion();
+function goNext(){
+  clearInterval(tickInterval); isShowingFeedback=false;
+  if(currentIndex<questions.length-1){ currentIndex++; timer=PER_QUESTION_SECONDS; renderQuestion(); startTimers(); }
+  else showResults();
 }
 
-function endQuiz(){
-  document.getElementById("quiz").style.display="none";
-  document.getElementById("summary").style.display="block";
-  let score=0; questions.forEach((q,i)=>{if(selections[i]===q.answer) score++;});
-  document.getElementById("teamNameCell").textContent=teamName;
-  document.getElementById("teamScoreCell").textContent=score+"/"+questions.length;
-  document.getElementById("finalTimerValue").textContent=totalTimer;
-  localStorage.removeItem("quizStarted");
+function showResults(){
+  clearInterval(tickInterval); clearInterval(totalInterval);
+  document.getElementById('quiz').style.display='none';
+  document.getElementById('summary').style.display='block';
+  document.getElementById('teamNameCell').textContent=teamName;
+  let score=0; questions.forEach((q,i)=>{ if(selections[i]===q.answer) score++; });
+  document.getElementById('teamScoreCell').textContent=`${score} / ${questions.length}`;
 }
 
-document.getElementById("startBtn").addEventListener("click",initQuiz);
-document.getElementById("nextBtn").addEventListener("click",nextQuestion);
+// Close quiz if tab is minimized
+document.addEventListener("visibilitychange",()=>{ if(document.hidden){ showResults(); } });
+
+document.getElementById('nextBtn').addEventListener('click',()=>{ if(!isShowingFeedback) submitOrShowFeedback(false); else goNext(); });
+document.getElementById('startBtn').addEventListener('click',initQuiz);
 </script>
 </body>
-</html>
+                                       </html>
